@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="jar" name="hello">
+	
+	 <target name="classpath">
+	        <path id="classpath">	            
+	            <pathelement location="target/classes"/>
+	            <pathelement location="target/test-classes"/>
+	        </path>
+	</target>
+	
+	
+	 <target name="compile" depends="classpath">
+	        <mkdir dir="target/classes"/>
+	        <javac srcdir="src/main" destdir="target/classes" classpathref="classpath" includeantruntime="false"/>
+	    </target>
+	 <target depends="compile" name="jar" description="Create jar-file">
+	    <echo message="Creating jar-file..." />
+	    <jar jarfile="./dist/hello-world.jar">
+	        <fileset dir="target/classes" />
+	        <manifest>
+	            <attribute name="Main-Class" value="" />
+	            <attribute name="Built-By" value="" />
+	            <attribute name="Build-Time" value="" />
+	            <section name="common">
+	                <attribute name="Specification-Title" value="" />
+	                <attribute name="Specification-Version" value="" />
+	                <attribute name="Specification-Vendor" value="" />
+	            </section>
+	        </manifest>
+	    </jar>
+	    </target>
+
+</project>
